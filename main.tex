@@ -1,4 +1,4 @@
-\documentclass[8pt,letterpaper]{extarticle}
+\documentclass[10pt,letterpaper]{extarticle}
 
 
 % Packages:
@@ -45,6 +45,7 @@
 \XeTeXlinebreakskip = 0pt plus 1pt  
 \usepackage{fonts-tlwg}
 \usepackage{etoolbox}
+\usepackage{layout}
 
 \newfontfamily\thaifont{THSarabunNew}
 
@@ -142,6 +143,11 @@
 % New command for external links:
 \renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}
 
+\setlength{\voffset}{0in}
+\setlength{\headsep}{5pt}
+\setlength{\footskip}{0pt}
+
+
 \begin{document}
     \newcommand{\AND}{\unskip
         \cleaders\copy\ANDbox\hskip\wd\ANDbox
@@ -178,26 +184,24 @@
 
         \begin{onecolentry}
             I am Third-year (2024) \textbf{Computer Engineering student at Kasetsart University with a GPA of 3.58}.
-            Passionate about a wide range of topics, including Artificial Intelligence, Cybersecurity, Data Analysis, Software development, Operator system and Networking.
+            Passionate about a wide range of topics, including Artificial Intelligence, Cybersecurity, Software development, Operator system and Networking.
             Constantly seeking opportunities to challenge myself and expand my skills.
         \end{onecolentry}
 
     \section{Skills}
 
         \begin{onecolentry}
-            \textbf{Programming Languages:} C++, C, Python, JavaScript, TypeScript, Java, SQL, Rust, C\#, Go
+            \textbf{Programming Languages:} C++, C, Python, JavaScript, TypeScript, Bash, Java, SQL, Rust, C\#, Go
         \end{onecolentry}
 
-        \vspace{0.2 cm}
 
         \begin{onecolentry}
-            \textbf{Technologies:} TensorFlow, PyTorch, Kubernetes, Docker, Apache Airflow, Nest.js, React Native, Redis, PostgreSQL, Svelte
+            \textbf{Technologies:} TensorFlow, PyTorch, Kubernetes, Docker, Git, Apache Airflow, Nest.js, React Native, Redis, PostgreSQL, Svelte
         \end{onecolentry}
 
-        \vspace{0.2 cm}
 
         \begin{onecolentry}
-            \textbf{Skills:} Linux, Problem Solving \& Algorithms, Web Security, Reverse Engineering, Networking, Data Pipelines
+            \textbf{Skills:} Linux, Problem Solving \& Algorithms, Image processing, NLP, Web Security, Reverse Engineering, Networking, Data Pipelines, OS
         \end{onecolentry}
 
     \section{Experience}
@@ -225,10 +229,9 @@
             \textbf{Food Delivery App (Group Project)}
         \end{twocolentry}
 
-        \vspace{0.10 cm}
         \begin{onecolentry}
             \begin{highlights}
-                Led the development of a microservices-based food delivery application. Implemented features for order processing, real-time tracking, and user authentication.
+                Led the development of a microservices-based food delivery application. Implemented agile workflow. Designed system, technical architecture. 3 mobile apps, 1 web app, 1 backend, 1 database. Microservices backend and inter-services communicate with kafka.
             \end{highlights}
         \end{onecolentry}
 
@@ -239,7 +242,6 @@
             \textbf{Web-based IDE Emulating Linux on Browser}
         \end{twocolentry}
 
-        \vspace{0.10 cm}
         \begin{onecolentry}
             \begin{highlights}
                 Developed an online IDE featuring a code editor, file storage, and a console emulating a Linux environment. Enabled users to write and execute code directly in the browser without local setup.
@@ -250,52 +252,43 @@
 
         \begin{twocolentry}{
             \textit{\href{https://pop-can.runnakjeen.com}{pop-can.runnakjeen.com}}}
-            \textbf{Pop-Can: Popcat Parody Supporting 300 Users Simultaneously}
+            \textbf{Pop-Can: Free Popcat Parody Supporting 300 Users Simultaneously}
         \end{twocolentry}
 
-        \vspace{0.10 cm}
         \begin{onecolentry}
             \begin{highlights}
-                Created a Popcat parody game using entirely free services. Engineered the application to support 300 unique users simultaneously with minimal latency.
+                Using entirely free services. Developed the application to support 300 unique users simultaneously.
             \end{highlights}
         \end{onecolentry}
 
     \section{Achievements}
-
         \begin{onecolentry}
             \begin{highlights}
-                \item \textbf{Thailand Olympiad in Informatics} (2020 and 2021)
+                \item \textbf{Thailand Olympiad in Informatics} (2020 and 2021) national programming competition
                     \begin{highlights}
-                        \item Participated in a national programming competition focusing on problem-solving and algorithms using C and C++.
                         \item Received a special award in 2021 (scores on the first day were the furthest from the second day).
                     \end{highlights}
-                \item \textbf{18th KU KPS National Conference and SCiUS Forum} (2021)
+                
+                \item \textbf{Thailand Cyber Top Talent} (2022 and 2023) National Cyber Security Agency (NCSA)
                     \begin{highlights}
-                        \item Published and presented research on the separation of rice varieties using AI and image processing.
-                        \item Won a silver medal in the national science project presentation.
-                    \end{highlights}
-                \item \textbf{SUPER AI Engineer Season 3} (2022)
-                    \begin{highlights}
-                        \item Passed rigorous training and was selected to continue in an advanced AI program.
-                    \end{highlights}
-                \item \textbf{Creative AI Camp by CP-ALL} (2021)
-                    \begin{highlights}
-                        \item Selected to join an intensive camp focusing on artificial intelligence and its applications.
-                    \end{highlights}
-                \item \textbf{Thailand Cyber Top Talent} (2022 and 2023)
-                    \begin{highlights}
-                        \item Participated in a national cybersecurity competition organized by the National Cyber Security Agency (NCSA).
                         \item Ranked 14th out of 354 participants in 2023.
                     \end{highlights}
-                \item \textbf{KPMG Cyber Security Challenge} (2022)
+
+                \item \textbf{18th KU KPS National Conference and Silver medal SCiUS Forum (national science project competition)}
                     \begin{highlights}
-                        \item Competed in cybersecurity challenges involving web exploitation, reverse engineering, and networking.
+                        \item Research on the separation of rice varieties using AI and image processing.
                     \end{highlights}
+                \item \textbf{SUPER AI Engineer Season 3} (2022)
+
                 \item \textbf{Winner of Innovation Robotic AI \& IoT Contest} (2023)
                     \begin{highlights}
-                        \item Developed a device that measures and predicts daily cow's milk production using AI.
-                        \item Recognized for innovation in robotics and IoT applications.
+                        \item Developed a hardware and software that measures and predicts daily cow's milk production.
                     \end{highlights}
+
+                \item \textbf{Creative AI Camp by CP-ALL} (2021)
+
+                \item \textbf{KPMG Cyber Security Challenge} (2022)
+
             \end{highlights}
         \end{onecolentry}
 
