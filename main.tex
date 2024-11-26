@@ -1,0 +1,300 @@
+\documentclass[8pt,letterpaper]{extarticle}
+
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=2 cm, % separation between body and page edge from the top
+    bottom=2 cm, % separation between body and page edge from the bottom
+    left=2 cm, % separation between body and page edge from the left
+    right=2 cm, % separation between body and page edge from the right
+    footskip=1.0 cm, % separation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 79, 144} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Run Nakjeen's CV},
+    pdfauthor={Run Nakjeen},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page break right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+\usepackage{anyfontsize}
+
+% Thai language support
+\usepackage{fontspec}
+\usepackage{xunicode}
+\usepackage{xltxtra}
+\XeTeXlinebreaklocale "th_TH"
+\XeTeXlinebreakskip = 0pt plus 1pt  
+\usepackage{fonts-tlwg}
+\usepackage{etoolbox}
+
+\newfontfamily\thaifont{THSarabunNew}
+
+% Ensure that generated PDF is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    % \usepackage[T1]{fontenc} % this breaks sb2nov
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+% Some settings:
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0cm} % set column separation
+\makeatletter
+% \let\ps@customFooterStyle\ps@plain % Copy the plain style to customFooterStyle
+% \patchcmd{\ps@customFooterStyle}{\thepage}{
+%     \color{gray}\textit{\small Run Nakjeen - Page \thepage{} of \pageref*{LastPage}}
+% }{}{} % replace number by desired string
+% \makeatother
+% \pagestyle{customFooterStyle}
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+\renewcommand\labelitemi{$\circ$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0.4 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0.2 cm + 0.00001 cm
+    }{
+        0.2 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 5.0 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0.2 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in September 2024}\hspace{\widthof{Last updated in September 2024}}
+    }}}%
+  }%
+}%
+
+% Save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+% New command for external links:
+\renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{}
+
+    % \placelastupdatedtext
+    \begin{header}
+        \textbf{\fontsize{20 pt}{20 pt}\selectfont Run Nakjeen ({\thaifont รัญชน์ นาคจีน})}
+
+        \vspace{0.3 cm}
+
+        \normalsize
+        \mbox{\hrefWithoutArrow{mailto:r.nakjeen@gmail.com}{\color{black}{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}r.nakjeen@gmail.com}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{tel:+66-88-098-6831}{\color{black}{\footnotesize\faPhone*}\hspace*{0.13cm}088-098-6831}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://github.com/Rmjp}{\color{black}{\footnotesize\faGithub}\hspace*{0.13cm}Github}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://www.linkedin.com/in/run-nakjeen-a45aaa230}{\color{black}{\footnotesize\faLinkedinIn}\hspace*{0.13cm}Linkedin}}%
+    \end{header}
+
+    \vspace{0.3 cm - 0.3 cm}
+
+    \section{Introduction}
+
+        \begin{onecolentry}
+            I am Third-year (2024) \textbf{Computer Engineering student at Kasetsart University with a GPA of 3.58}. I enjoy learning new things every day. Passionate about a wide range of topics, including Artificial Intelligence, Cybersecurity, Data Analysis, Software development, Operator system and Networking. Constantly seeking opportunities to apply and expand my skills in cutting-edge technologies and innovative projects.
+        \end{onecolentry}
+
+    \section{Experience}
+
+        \begin{twocolentry}{
+            \textit{April 2024 – June 2024}}
+            \textbf{Data Engineer Intern}
+
+            \textit{Innovative Extremist (INOX)}
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Designed and optimized Airflow DAGs to enhance workflow efficiency.
+                \item Implemented robust data quality checks to ensure pipeline reliability and accuracy.
+                \item Improved pipeline integration by implementing data passing between tasks.
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Achievements}
+
+        \begin{onecolentry}
+            \begin{highlights}
+                \item \textbf{Thailand Olympiad in Informatics} (2020 and 2021)
+                    \begin{highlights}
+                        \item Participated in a national programming competition focusing on problem-solving and algorithms using C and C++.
+                        \item Received a special award in 2021 (scores on the first day were the furthest from the second day).
+                    \end{highlights}
+                \item \textbf{18th KU KPS National Conference and SCiUS Forum} (2021)
+                    \begin{highlights}
+                        \item Published and presented research on the separation of rice varieties using AI and image processing.
+                        \item Won a silver medal in the national science project presentation.
+                    \end{highlights}
+                \item \textbf{SUPER AI Engineer Season 3} (2022)
+                    \begin{highlights}
+                        \item Passed rigorous training and was selected to continue in an advanced AI program.
+                    \end{highlights}
+                \item \textbf{Creative AI Camp by CP-ALL} (2021)
+                    \begin{highlights}
+                        \item Selected to join an intensive camp focusing on artificial intelligence and its applications.
+                    \end{highlights}
+                \item \textbf{Thailand Cyber Top Talent} (2022 and 2023)
+                    \begin{highlights}
+                        \item Participated in a national cybersecurity competition organized by the National Cyber Security Agency (NCSA).
+                        \item Ranked 14th out of 354 participants in 2023.
+                    \end{highlights}
+                \item \textbf{KPMG Cyber Security Challenge} (2022)
+                    \begin{highlights}
+                        \item Competed in cybersecurity challenges involving web exploitation, reverse engineering, and networking.
+                    \end{highlights}
+                \item \textbf{Winner of Innovation Robotic AI \& IoT Contest} (2023)
+                    \begin{highlights}
+                        \item Developed a device that measures and predicts daily cow's milk production using AI.
+                        \item Recognized for innovation in robotics and IoT applications.
+                    \end{highlights}
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Projects}
+
+        \begin{twocolentry}{
+            \textit{Lead Developer}}
+            \textbf{Food Delivery App (Group Project)}
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                Led the development of a microservices-based food delivery application. Implemented features for order processing, real-time tracking, and user authentication.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            \textit{\href{https://ide.runnakjeen.com}{ide.runnakjeen.com}}}
+            \textbf{Web-based IDE Emulating Linux on Browser}
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                Developed an online IDE featuring a code editor, file storage, and a console emulating a Linux environment. Enabled users to write and execute code directly in the browser without local setup.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            \textit{\href{https://pop-can.runnakjeen.com}{pop-can.runnakjeen.com}}}
+            \textbf{Pop-Can: Popcat Parody Supporting 300 Users Simultaneously}
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                Created a Popcat parody game using entirely free services. Engineered the application to support 300 unique users simultaneously with minimal latency.
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Skills}
+
+        \begin{onecolentry}
+            \textbf{Programming Languages:} C++, C, Python, JavaScript, TypeScript, Java, SQL, Rust, C\#, Go
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Technologies \& Frameworks:} TensorFlow, PyTorch, Kubernetes, Docker, Apache Airflow, Nest.js, React Native, Redis, PostgreSQL, Svelte
+        \end{onecolentry}
+
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{Skills:} Linux, Problem Solving \& Algorithms, Web Security, Reverse Engineering, Networking, Data Pipelines
+        \end{onecolentry}
+
+\end{document}
