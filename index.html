@@ -6,6 +6,12 @@
   <title>Display CV</title>
 </head>
 <body style="height: 100vh; padding: 0; margin: 0;">
-  <embed src="/main.pdf" width="100%" height="100%" type="application/pdf">
+  <embed id="pdf-viewer" width="100%" height="100%" type="application/pdf">
+  
+  <script>
+    // Get current URL without query/hash
+    const baseUrl = window.location.origin + window.location.pathname.replace(/\/$/, "");
+    document.getElementById("pdf-viewer").src = baseUrl + "/main.pdf";
+  </script>
 </body>
 </html>
